@@ -26,9 +26,19 @@ Marketing website for CoRaise (www.coraise.com.au) - an Australian co-parenting 
 
 ### Branding
 - NEVER mention GoHighLevel, GHL, Vercel, or internal tooling in client-facing content.
+- Legal entity: MLA Ventures Pty Ltd (ABN 88 673 150 224), trading as CoRaise. NOT MyDigital Group (that was the old entity).
 - Use Australian English: colour, organised, realising, defence. Hyphens not em dashes.
 - Terminology: "co-parent" not "ex", "time with children" not "custody/access", "parenting time" not "custody".
 - Logo uses teal (#3d8a83) + coral (#E8896A). The coral is intentionally different from the UI indigo (#6560a8). Both are correct for their contexts - do not "fix" the mismatch.
+
+### Legal (Privacy Policy + Terms of Service)
+- Minimum account age: 16. Enhanced consent for 16-17 year olds (must be a parent). Under-16 only via court order with manual review.
+- Data retention: all data retained while EITHER parent's account is active. When BOTH close, 90-day cooling-off, then deleted per applicable law.
+- Messages are immutable (SHA-256, append-only). Cannot be deleted even on account closure while the other parent is active.
+- Website uses Meta Pixel + Google analytics (offshore). App data NEVER leaves Australia. Both covered in one combined Privacy Policy with clear distinction.
+- Third-party services (app): Supabase (AU), Stripe, Resend, Expo. (website): Meta, Google, Vercel.
+- Privacy Policy address placeholder `[Address]` needs replacing when physical address is confirmed.
+- Australian Consumer Law guarantees are explicitly preserved in Terms (never excluded).
 
 ### UX ("Calm Over Clever")
 - 16px minimum body text. 48x48dp minimum touch targets.
