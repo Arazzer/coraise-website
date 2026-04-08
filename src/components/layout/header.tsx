@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { NAV_LINKS, APP_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
@@ -40,10 +41,15 @@ export function Header() {
       >
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold text-primary-500 dark:text-[#2BC4C6]">
-                CoRaise
-              </span>
+            <Link href="/" className="flex items-center min-h-[48px]">
+              <Image
+                src="/images/logo-text.png"
+                alt="CoRaise"
+                width={165}
+                height={32}
+                priority
+                sizes="165px"
+              />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-6">
@@ -83,10 +89,14 @@ export function Header() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[60] bg-[var(--bg-primary)]">
           <div className="flex h-16 items-center justify-between px-4">
-            <Link href="/" onClick={() => setMobileOpen(false)}>
-              <span className="text-xl font-bold text-primary-500 dark:text-[#2BC4C6]">
-                CoRaise
-              </span>
+            <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center min-h-[48px]">
+              <Image
+                src="/images/logo-text.png"
+                alt="CoRaise"
+                width={165}
+                height={32}
+                sizes="165px"
+              />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
