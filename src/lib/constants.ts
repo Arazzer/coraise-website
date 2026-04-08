@@ -3,7 +3,8 @@ export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.coraise.c
 
 export const COMPANY = {
   name: 'CoRaise',
-  legalName: 'MyDigital Group',
+  legalName: 'MLA Ventures Pty Ltd',
+  abn: '88 673 150 224',
   tagline: 'Co-parenting made simpler.',
   description:
     'Australian co-parenting communication platform with tamper-proof messaging, shared calendars, expense tracking, and court-ready records for separated families.',
