@@ -86,31 +86,35 @@ export default async function BlogPostPage({ params }: PageProps) {
         ])}
       />
 
-      <article className="py-12 md:py-20">
+      <article className="py-16 md:py-24">
         <div className="mx-auto max-w-[720px] px-4 sm:px-6">
           {/* Back link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors min-h-[48px]"
+            className="inline-flex items-center gap-1.5 text-sm text-[var(--text-tertiary)] hover:text-primary-500 dark:hover:text-[#2BC4C6] transition-colors min-h-[48px]"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             All posts
           </Link>
 
           {/* Header */}
-          <header className="mt-6">
+          <header className="mt-8 pb-10 border-b border-[var(--border-default)]">
             <span
               className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${getCategoryClasses(meta.category)}`}
             >
               {meta.category}
             </span>
 
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl leading-tight">
+            <h1 className="mt-5 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl md:text-[2.5rem] leading-[1.15]">
               {meta.title}
             </h1>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-[var(--text-tertiary)]">
-              <span>{meta.author}</span>
+            <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
+              {meta.description}
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-[var(--text-tertiary)]">
+              <span className="font-medium text-[var(--text-secondary)]">{meta.author}</span>
               <span aria-hidden="true">&middot;</span>
               <time dateTime={meta.date}>{formatDate(meta.date)}</time>
               <span aria-hidden="true">&middot;</span>
@@ -122,7 +126,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
 
           {/* Article body */}
-          <div className="prose mt-10 max-w-none text-[var(--text-secondary)]">
+          <div className="prose mt-12 max-w-none text-[var(--text-secondary)]">
             <MDXRemote
               source={content}
               options={{
@@ -136,15 +140,20 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Tags */}
           {meta.tags.length > 0 && (
-            <div className="mt-10 flex flex-wrap gap-2">
-              {meta.tags.map((tag: string) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-[var(--bg-secondary)] border border-[var(--border-default)] px-3 py-1 text-xs text-[var(--text-tertiary)]"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="mt-12 border-t border-[var(--border-default)] pt-8">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)] mb-3">
+                Topics
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {meta.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-[var(--bg-secondary)] border border-[var(--border-default)] px-3.5 py-1.5 text-xs font-medium text-[var(--text-secondary)] hover:border-primary-300 dark:hover:border-[#2BC4C6]/40 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -152,34 +161,57 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="bg-[var(--bg-secondary)] py-16 md:py-24">
+        <section className="relative bg-[var(--bg-secondary)] py-20 md:py-28 section-wave">
+          <div className="section-wave-top" aria-hidden="true">
+            <svg
+              viewBox="0 0 1440 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              className="h-full w-full"
+            >
+              <path
+                d="M0 48C360 20 720 8 1080 32C1260 44 1380 56 1440 48V0H0V48Z"
+                fill="var(--bg-primary)"
+              />
+            </svg>
+          </div>
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-2xl font-bold text-[var(--text-primary)]">Related posts</h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+              Keep reading
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-[var(--text-primary)]">Related posts</h2>
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((related) => (
                 <Link
                   key={related.slug}
                   href={`/blog/${related.slug}`}
-                  className="group rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:shadow-[0_4px_6px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.04)] hover:border-primary-300 dark:hover:border-[#2BC4C6]/40"
+                  className="group flex flex-col rounded-xl border border-[var(--border-default)] bg-[var(--bg-primary)] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06),0_4px_8px_rgba(0,0,0,0.03)] hover:border-primary-300 hover:-translate-y-0.5 dark:hover:border-[#2BC4C6]/40"
                 >
-                  <span
-                    className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${getCategoryClasses(related.category)}`}
-                  >
-                    {related.category}
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold text-[var(--text-primary)] line-clamp-2 group-hover:text-primary-500 dark:group-hover:text-[#2BC4C6] transition-colors">
-                    {related.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-[var(--text-secondary)] line-clamp-3">
-                    {related.description}
-                  </p>
-                  <div className="mt-4 flex items-center gap-3 text-xs text-[var(--text-tertiary)]">
-                    <time dateTime={related.date}>{formatDate(related.date)}</time>
-                    <span aria-hidden="true">&middot;</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                      {related.readingTime} min read
+                  <div className="h-1 rounded-t-xl bg-gradient-to-r from-primary-400 to-primary-500 dark:from-[#2BC4C6] dark:to-primary-500" />
+                  <div className="flex flex-1 flex-col p-6">
+                    <span
+                      className={`self-start inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${getCategoryClasses(related.category)}`}
+                    >
+                      {related.category}
                     </span>
+                    <h3 className="mt-4 text-lg font-semibold text-[var(--text-primary)] line-clamp-2 group-hover:text-primary-500 dark:group-hover:text-[#2BC4C6] transition-colors">
+                      {related.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">
+                      {related.description}
+                    </p>
+                    <div className="mt-5 flex items-center justify-between border-t border-[var(--border-default)] pt-4">
+                      <div className="flex items-center gap-3 text-xs text-[var(--text-tertiary)]">
+                        <time dateTime={related.date}>{formatDate(related.date)}</time>
+                        <span aria-hidden="true">&middot;</span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                          {related.readingTime} min
+                        </span>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-[var(--text-tertiary)] transition-all group-hover:text-primary-500 group-hover:translate-x-0.5 dark:group-hover:text-[#2BC4C6]" />
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -189,20 +221,34 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* CTA */}
-      <section className="py-16 md:py-24 text-center">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)]">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 dark:from-primary-800 dark:via-primary-700 dark:to-primary-900">
+        <div
+          className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/5"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 md:py-28">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
             Ready to try CoRaise?
           </h2>
-          <p className="mt-4 text-lg text-[var(--text-secondary)]">
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/80">
             Start with the Free plan - no credit card needed. All the tools your family needs in
             one secure platform.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button href={`${APP_URL}/register`} variant="primary" size="lg">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Button
+              href={`${APP_URL}/register`}
+              variant="secondary"
+              size="lg"
+              className="border-white bg-white text-primary-700 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:bg-white/90 dark:border-white dark:bg-white dark:text-primary-700 dark:hover:bg-white/90"
+            >
               Get Started Free
             </Button>
-            <Button href="/features" variant="secondary" size="lg">
+            <Button
+              href="/features"
+              variant="ghost"
+              size="lg"
+              className="text-white/90 hover:bg-white/10 hover:text-white dark:text-white/90 dark:hover:bg-white/10"
+            >
               Explore Features
               <ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" />
             </Button>

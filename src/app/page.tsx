@@ -90,20 +90,33 @@ export default function HomePage() {
       <JsonLd data={faqSchema(FAQ_ITEMS)} />
 
       {/* 1. Hero */}
-      <section className="bg-[var(--bg-secondary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
+      <section className="relative overflow-hidden bg-[var(--bg-secondary)]">
+        {/* Background glow elements */}
+        <div
+          className="hero-glow absolute -top-48 -right-48 bg-primary-300"
+          aria-hidden="true"
+        />
+        <div
+          className="hero-glow absolute -bottom-32 -left-32 bg-secondary-300"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8 lg:py-32">
           <div className="grid items-center gap-12 md:grid-cols-5">
             {/* Copy - 60 % */}
             <div className="md:col-span-3">
-              <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-5xl">
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+                Co-parenting made calmer
+              </p>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem] md:leading-[1.1]">
                 The co-parenting app built for Australian families.
               </h1>
-              <p className="mt-6 text-lg text-[var(--text-secondary)] md:text-xl">
-                The Australian co-parenting app with secure messaging, shared calendars with school terms,
+              <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)] md:text-xl md:leading-relaxed">
+                Secure messaging, shared calendars with school terms,
                 expense tracking, and court-ready records. One subscription. Both
                 parents get full access.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Button variant="primary" size="lg" href={`${APP_URL}/register`}>
                   Get Started Free
                 </Button>
@@ -111,6 +124,9 @@ export default function HomePage() {
                   See How It Works
                 </Button>
               </div>
+              <p className="mt-4 text-sm text-[var(--text-tertiary)]">
+                Free plan available. No credit card required.
+              </p>
             </div>
 
             {/* Decorative - 40 % */}
@@ -118,23 +134,42 @@ export default function HomePage() {
               className="hidden items-center justify-center md:col-span-2 md:flex"
               aria-hidden="true"
             >
-              <div className="relative h-64 w-64">
-                {/* Teal circle */}
-                <div className="absolute left-4 top-6 h-44 w-44 rounded-full bg-primary-300/40 dark:bg-primary-600/30" />
+              <div className="relative h-80 w-80">
+                {/* Teal circle - larger, softer */}
+                <div className="absolute left-2 top-4 h-52 w-52 rounded-full bg-primary-200/50 dark:bg-primary-600/20" />
                 {/* Indigo circle */}
-                <div className="absolute bottom-6 right-4 h-44 w-44 rounded-full bg-secondary-300/40 dark:bg-secondary-600/30" />
-                {/* Overlap glow */}
-                <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-400/30 blur-md dark:bg-[#2BC4C6]/20" />
+                <div className="absolute bottom-4 right-2 h-52 w-52 rounded-full bg-secondary-200/50 dark:bg-secondary-600/20" />
+                {/* Centre overlap glow */}
+                <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-300/40 blur-xl dark:bg-[#2BC4C6]/15" />
+                {/* Small accent dot */}
+                <div className="absolute right-12 top-8 h-6 w-6 rounded-full bg-primary-400/30 dark:bg-[#2BC4C6]/20" />
+                <div className="absolute left-12 bottom-8 h-4 w-4 rounded-full bg-secondary-400/30 dark:bg-secondary-400/15" />
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Wave divider to next section */}
+        <div className="section-wave-bottom" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 32C240 56 480 64 720 48C960 32 1200 8 1440 16V64H0V32Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
         </div>
       </section>
 
       {/* 2. Trust Bar */}
       <section className="border-b border-[var(--border-default)] bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-8 sm:px-6 lg:px-8">
-          <ul className="grid grid-cols-2 gap-6 text-center sm:grid-cols-3 md:grid-cols-5 md:gap-4">
+        <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8">
+          <ul className="grid grid-cols-2 gap-4 text-center sm:grid-cols-3 md:grid-cols-5 md:gap-6">
             {[
               { icon: MapPin, text: 'Built and hosted in Sydney' },
               { icon: Shield, text: 'Evidence Act 1995 compliant' },
@@ -144,10 +179,12 @@ export default function HomePage() {
             ].map(({ icon: Icon, text }) => (
               <li
                 key={text}
-                className="flex flex-col items-center gap-2"
+                className="trust-badge"
               >
-                <Icon className="h-5 w-5 text-primary-500 dark:text-[#2BC4C6]" />
-                <span className="text-xs text-[var(--text-secondary)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30">
+                  <Icon className="h-5 w-5 text-primary-500 dark:text-[#2BC4C6]" />
+                </div>
+                <span className="text-xs font-medium text-[var(--text-secondary)]">
                   {text}
                 </span>
               </li>
@@ -157,40 +194,54 @@ export default function HomePage() {
       </section>
 
       {/* 3. Feature Highlights */}
-      <section id="features" className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
-            Features
-          </p>
-          <h2 className="mt-2 text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            Everything in one place.
-          </h2>
+      <section id="features" className="relative bg-[var(--bg-primary)]">
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+              Features
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+              Everything in one place.
+            </h2>
+            <p className="mt-4 text-lg text-[var(--text-secondary)]">
+              Communication, schedules, and finances - all designed to reduce conflict.
+            </p>
+          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
               {
                 icon: MessageCircle,
                 title: 'Structured communication.',
                 body: 'Messages are time-stamped and cannot be edited or deleted. A 10-second preview and 30-second cooldown help everyone communicate more carefully.',
+                gradient: 'from-primary-50 to-primary-100/50 dark:from-primary-900/20 dark:to-primary-900/5',
               },
               {
                 icon: Calendar,
                 title: 'Shared schedules.',
                 body: 'Australian school terms and state-specific public holidays pre-loaded. Propose, approve, or decline schedule changes with a clear record.',
+                gradient: 'from-secondary-50 to-secondary-100/50 dark:from-secondary-900/20 dark:to-secondary-900/5',
               },
               {
                 icon: Receipt,
                 title: 'Financial transparency.',
                 body: 'Log shared expenses, photograph receipts, and track who owes what with an automatic running balance.',
+                gradient: 'from-primary-50 to-secondary-50/50 dark:from-primary-900/15 dark:to-secondary-900/10',
               },
-            ].map(({ icon: Icon, title, body }) => (
+            ].map(({ icon: Icon, title, body, gradient }) => (
               <Link key={title} href="/features" className="group">
-                <Card className="h-full transition-shadow group-hover:shadow-md">
-                  <Icon className="h-8 w-8 text-primary-500 dark:text-[#2BC4C6]" />
-                  <h3 className="mt-4 text-lg font-semibold text-[var(--text-primary)]">
+                <Card className="h-full">
+                  <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gradient}`}>
+                    <Icon className="h-6 w-6 text-primary-500 dark:text-[#2BC4C6]" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-[var(--text-primary)] group-hover:text-primary-600 dark:group-hover:text-[#2BC4C6] transition-colors">
                     {title}
                   </h3>
-                  <p className="mt-2 text-[var(--text-secondary)]">{body}</p>
+                  <p className="mt-2 leading-relaxed text-[var(--text-secondary)]">{body}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-500 dark:text-[#2BC4C6] opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
                 </Card>
               </Link>
             ))}
@@ -199,128 +250,201 @@ export default function HomePage() {
       </section>
 
       {/* 4. Australian Differentiator */}
-      <section className="bg-primary-50 dark:bg-[#0F2C2C]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            Built here. Hosted here. For families here.
-          </h2>
+      <section className="relative bg-teal-soft section-wave">
+        {/* Wave top */}
+        <div className="section-wave-top" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 48C360 16 720 0 1080 24C1260 36 1380 52 1440 48V0H0V48Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
+        </div>
 
-          <ul className="mt-8 space-y-4">
-            {[
-              'School terms for every Australian state and territory',
-              'State-specific public holidays (Melbourne Cup, Royal Queensland Show, and more)',
-              'All data stored in Sydney, Australia - never offshore',
-              'Evidence Act 1995 compliant court exports',
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary-500 dark:text-[#2BC4C6]" />
-                <span className="text-[var(--text-secondary)]">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8 lg:py-32">
+          <div className="grid gap-12 md:grid-cols-2 md:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+                100% Australian
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                Built here. Hosted here. For families here.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-[var(--text-secondary)]">
+                Your family&apos;s data stays in Australia. Always.
+              </p>
+            </div>
+
+            <ul className="space-y-5">
+              {[
+                'School terms for every Australian state and territory',
+                'State-specific public holidays (Melbourne Cup, Royal Queensland Show, and more)',
+                'All data stored in Sydney, Australia - never offshore',
+                'Evidence Act 1995 compliant court exports',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-500/10 dark:bg-[#2BC4C6]/10">
+                    <Check className="h-4 w-4 text-primary-500 dark:text-[#2BC4C6]" />
+                  </div>
+                  <span className="text-[var(--text-secondary)] leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Wave bottom */}
+        <div className="section-wave-bottom" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 16C240 40 480 56 720 40C960 24 1200 0 1440 8V64H0V16Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
         </div>
       </section>
 
       {/* 5. Pricing Teaser */}
       <section className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
-            Pricing
-          </p>
-          <h2 className="mt-2 text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            One subscription. Both parents.
-          </h2>
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+              Pricing
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+              One subscription. Both parents.
+            </h2>
+            <p className="mt-4 text-[var(--text-secondary)]">
+              No per-parent pricing. No hidden fees.
+            </p>
+          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
             {/* Free */}
-            <Card>
-              <p className="text-sm font-medium text-[var(--text-secondary)]">
+            <Card className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
                 {PRICING.free.name}
               </p>
-              <p className="mt-2 text-3xl font-bold text-[var(--text-primary)]">
+              <p className="mt-4 text-4xl font-bold text-[var(--text-primary)]">
                 $0
               </p>
-              <p className="mt-1 text-sm text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
                 Get started with basic features
               </p>
             </Card>
 
             {/* Family - highlighted */}
-            <Card highlight>
-              <p className="text-sm font-medium text-primary-500 dark:text-[#2BC4C6]">
+            <Card highlight elevated className="text-center md:-translate-y-2">
+              <div className="mb-4 inline-flex rounded-full bg-primary-500/10 px-3 py-1 text-xs font-semibold text-primary-600 dark:bg-[#2BC4C6]/10 dark:text-[#2BC4C6]">
+                Most popular
+              </div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary-500 dark:text-[#2BC4C6]">
                 {PRICING.family.name}
               </p>
-              <p className="mt-2 text-3xl font-bold text-[var(--text-primary)]">
+              <p className="mt-4 text-4xl font-bold text-[var(--text-primary)]">
                 ${PRICING.family.price}
                 <span className="text-base font-normal text-[var(--text-secondary)]">
                   /mo
                 </span>
               </p>
-              <p className="mt-1 text-sm text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
                 Full features for your family
               </p>
             </Card>
 
             {/* Premium */}
-            <Card>
-              <p className="text-sm font-medium text-[var(--text-secondary)]">
+            <Card className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
                 {PRICING.premium.name}
               </p>
-              <p className="mt-2 text-3xl font-bold text-[var(--text-primary)]">
+              <p className="mt-4 text-4xl font-bold text-[var(--text-primary)]">
                 ${PRICING.premium.price}
                 <span className="text-base font-normal text-[var(--text-secondary)]">
                   /mo
                 </span>
               </p>
-              <p className="mt-1 text-sm text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
                 Everything, unlimited
               </p>
             </Card>
           </div>
 
-          <p className="mt-6 text-sm text-[var(--text-tertiary)]">
-            Compare: OurFamilyWizard charges $330-$900/year. TalkingParents
-            charges $210-$960/year.
-          </p>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-[var(--text-tertiary)]">
+              Compare: OurFamilyWizard charges $330-$900/year. TalkingParents
+              charges $210-$960/year.
+            </p>
 
-          <div className="mt-4">
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-[#2BC4C6] dark:hover:text-[#24A8AA]"
-            >
-              View full pricing
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-4">
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-1 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-[#2BC4C6] dark:hover:text-[#24A8AA]"
+              >
+                View full pricing
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 6. Social Proof / Stats */}
-      <section className="bg-[var(--bg-secondary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <h2 className="text-center text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
+      <section className="relative bg-[var(--bg-secondary)] section-wave">
+        {/* Wave top */}
+        <div className="section-wave-top" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 48C360 20 720 8 1080 32C1260 44 1380 56 1440 48V0H0V48Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
+        </div>
+
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8 lg:py-32">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
             Built for Australian families.
           </h2>
+          <p className="mt-4 text-center text-lg text-[var(--text-secondary)]">
+            The families who need a better way to co-parent.
+          </p>
 
-          <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
             {[
               { stat: '650,000+', label: 'separated families in Australia' },
               { stat: '1.3M', label: 'children across two households' },
               { stat: '220,000', label: 'separations per year' },
               { stat: '101,000+', label: 'family law applications filed annually' },
             ].map(({ stat, label }) => (
-              <Card key={stat} className="text-center">
-                <p className="text-2xl font-bold text-primary-500 dark:text-[#2BC4C6] md:text-3xl">
+              <div key={stat} className="text-center">
+                <p className="stat-number text-3xl font-bold md:text-4xl">
                   {stat}
                 </p>
-                <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                <p className="mt-3 text-sm text-[var(--text-secondary)] leading-relaxed">
                   {label}
                 </p>
-              </Card>
+              </div>
             ))}
           </div>
 
-          <p className="mt-6 text-center text-xs text-[var(--text-tertiary)]">
+          <p className="mt-10 text-center text-xs text-[var(--text-tertiary)]">
             Source: Australian Bureau of Statistics, FCFCOA
           </p>
         </div>
@@ -328,12 +452,20 @@ export default function HomePage() {
 
       {/* 7. Competitor Migration */}
       <section className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            Switching from another app?
-          </h2>
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+              Switching
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+              Switching from another app?
+            </h2>
+            <p className="mt-4 text-lg text-[var(--text-secondary)]">
+              Other co-parenting apps are raising prices. CoRaise offers more for less.
+            </p>
+          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[
               {
                 name: 'TalkingParents',
@@ -355,20 +487,20 @@ export default function HomePage() {
               },
             ].map(({ name, badge, body, href }) => (
               <Link key={name} href={href} className="group">
-                <Card className="h-full transition-shadow group-hover:shadow-md">
-                  <div className="mb-3 inline-flex items-center gap-1.5 rounded-md bg-warning-light px-2.5 py-1 text-xs font-medium text-warning dark:bg-warning/10 dark:text-warning">
+                <Card className="h-full">
+                  <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-warning-light px-3 py-1 text-xs font-medium text-warning dark:bg-warning/10 dark:text-warning">
                     <AlertTriangle className="h-3.5 w-3.5" />
                     {badge}
                   </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] group-hover:text-primary-600 dark:group-hover:text-[#2BC4C6] transition-colors">
                     {name}
                   </h3>
-                  <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                  <p className="mt-3 text-[var(--text-secondary)] leading-relaxed">
                     {body}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-500 group-hover:text-primary-600 dark:text-[#2BC4C6] dark:group-hover:text-[#24A8AA]">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary-500 group-hover:text-primary-600 dark:text-[#2BC4C6] dark:group-hover:text-[#24A8AA] transition-colors">
                     Compare
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Card>
               </Link>
@@ -379,32 +511,56 @@ export default function HomePage() {
 
       {/* 8. FAQ */}
       <section className="bg-[var(--bg-secondary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            Frequently asked questions
-          </h2>
-
-          <div className="mt-8 max-w-3xl">
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+          <div className="grid gap-12 md:grid-cols-[1fr_2fr] md:items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+                FAQ
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                Questions &amp; answers
+              </h2>
+              <p className="mt-4 text-[var(--text-secondary)] leading-relaxed">
+                Everything you need to know about CoRaise. Can&apos;t find what you&apos;re looking for?{' '}
+                <Link
+                  href="/contact"
+                  className="text-primary-500 hover:text-primary-600 dark:text-[#2BC4C6] dark:hover:text-[#24A8AA] underline underline-offset-2"
+                >
+                  Get in touch
+                </Link>
+                .
+              </p>
+            </div>
             <Accordion items={FAQ_ITEMS} />
           </div>
         </div>
       </section>
 
       {/* 9. Final CTA */}
-      <section className="bg-primary-500 dark:bg-primary-700">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 text-center sm:px-6 md:py-20 lg:px-8 lg:py-24">
-          <h2 className="text-2xl font-bold text-white md:text-3xl">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 dark:from-primary-800 dark:via-primary-700 dark:to-primary-900">
+        {/* Subtle decorative circles */}
+        <div
+          className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/5"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-white/5"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-[1200px] px-4 py-20 text-center sm:px-6 md:py-28 lg:px-8 lg:py-32">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
             Get started in under 5 minutes.
           </h2>
-          <p className="mt-4 text-lg text-white/80">
-            Free to try. No credit card required.
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/80">
+            Free to try. No credit card required. One subscription covers both parents.
           </p>
-          <div className="mt-8">
+          <div className="mt-10">
             <Button
               variant="secondary"
               size="lg"
               href={`${APP_URL}/register`}
-              className="border-white bg-white text-primary-700 hover:bg-white/90 dark:border-white dark:bg-white dark:text-primary-700 dark:hover:bg-white/90"
+              className="border-white bg-white text-primary-700 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:bg-white/90 hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)] dark:border-white dark:bg-white dark:text-primary-700 dark:hover:bg-white/90"
             >
               Get Started Free
             </Button>

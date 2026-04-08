@@ -2,6 +2,7 @@ import {
   LogOut,
   EyeOff,
   BellOff,
+  Shield,
   ShieldOff,
   AlertTriangle,
   Timer,
@@ -137,7 +138,7 @@ export default function SafetyPage() {
 
       {/* 1. Emergency banner - above the fold */}
       <section
-        className="bg-[#FEF3E2] dark:bg-warning/10"
+        className="bg-gradient-to-r from-[#FEF3E2] to-[#FFF8EE] dark:from-warning/10 dark:to-warning/5 border-b border-[#F0DFC0] dark:border-warning/20"
         role="region"
         aria-label="Emergency contact information"
       >
@@ -169,12 +170,16 @@ export default function SafetyPage() {
       </section>
 
       {/* 2. Hero */}
-      <section className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 md:py-24">
-          <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
+      <section className="relative overflow-hidden bg-[var(--bg-primary)]">
+        <div className="hero-glow absolute -top-32 left-1/2 -translate-x-1/2 bg-primary-200" aria-hidden="true" />
+        <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 md:py-28">
+          <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30">
+            <Shield className="h-8 w-8 text-primary-500 dark:text-[#2BC4C6]" />
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.25rem] leading-[1.1]">
             Safety is built in, not bolted on.
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)]">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
             80% of Family Court parenting applications involve allegations of
             family violence. CoRaise was designed with this reality from the
             beginning.
@@ -183,37 +188,55 @@ export default function SafetyPage() {
       </section>
 
       {/* 3. Safety features - 7 detailed subsections */}
-      <section className="bg-[var(--bg-secondary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
-            Safety features
-          </p>
-          <h2 className="mt-2 text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            How CoRaise protects you.
-          </h2>
+      <section className="relative bg-[var(--bg-secondary)] section-wave">
+        <div className="section-wave-top" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 48C360 20 720 8 1080 32C1260 44 1380 56 1440 48V0H0V48Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
+        </div>
 
-          <div className="mt-12 space-y-8">
-            {SAFETY_FEATURES.map((feature) => {
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+              Safety features
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+              How CoRaise protects you.
+            </h2>
+            <p className="mt-4 text-lg text-[var(--text-secondary)]">
+              Every safety feature was designed with input from DV support services.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SAFETY_FEATURES.map((feature, index) => {
               const Icon = feature.icon
               return (
                 <div
                   key={feature.title}
-                  className="grid gap-4 md:grid-cols-[56px_1fr] md:items-start"
+                  className={`safety-feature-card ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
                 >
                   <div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/40"
+                    className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 dark:bg-primary-900/30"
                     aria-hidden="true"
                   >
                     <Icon className="h-6 w-6 text-primary-500 dark:text-[#2BC4C6]" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[var(--text-primary)]">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-2 max-w-2xl text-[var(--text-secondary)] leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-[var(--text-primary)]">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-[var(--text-secondary)] leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               )
             })}
@@ -223,60 +246,90 @@ export default function SafetyPage() {
 
       {/* 4. What we deliberately excluded */}
       <section className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            What we chose not to build.
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg text-[var(--text-secondary)] leading-relaxed">
-            Some features that other apps include can be weaponised in
-            high-conflict or DV situations. We left them out on purpose.
-          </p>
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-2 md:items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+                By design
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                What we chose not to build.
+              </h2>
+              <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
+                Some features that other apps include can be weaponised in
+                high-conflict or DV situations. We left them out on purpose.
+              </p>
+              <p className="mt-6 text-sm text-[var(--text-tertiary)] leading-relaxed border-l-2 border-primary-200 dark:border-primary-700 pl-4">
+                Research from La Trobe University (2026) found that AI tone filtering
+                in co-parenting apps can inadvertently suppress legitimate reports of
+                abuse. CoRaise does not analyse, filter, or modify your messages in
+                any way.
+              </p>
+            </div>
 
-          <ul className="mt-8 space-y-4" role="list">
-            {EXCLUDED_FEATURES.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <X
-                  className="mt-0.5 h-5 w-5 shrink-0 text-neutral-400 dark:text-neutral-500"
-                  aria-hidden="true"
-                />
-                <span className="text-[var(--text-secondary)]">{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="mt-8 max-w-2xl text-sm text-[var(--text-tertiary)] leading-relaxed">
-            Research from La Trobe University (2026) found that AI tone filtering
-            in co-parenting apps can inadvertently suppress legitimate reports of
-            abuse. CoRaise does not analyse, filter, or modify your messages in
-            any way.
-          </p>
+            <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)] p-8">
+              <ul className="space-y-5" role="list">
+                {EXCLUDED_FEATURES.map((item) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800">
+                      <X
+                        className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-500"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <span className="text-[var(--text-secondary)] leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 5. Safety resources */}
-      <section className="bg-[var(--bg-secondary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            If you need help right now.
-          </h2>
-          <p className="mt-4 text-lg text-[var(--text-secondary)]">
-            These services are free, confidential, and available 24 hours a day.
-          </p>
+      <section className="relative bg-[var(--bg-secondary)] section-wave">
+        <div className="section-wave-top" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="h-full w-full"
+          >
+            <path
+              d="M0 48C360 20 720 8 1080 32C1260 44 1380 56 1440 48V0H0V48Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
+        </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+              If you need help right now.
+            </h2>
+            <p className="mt-4 text-lg text-[var(--text-secondary)]">
+              These services are free, confidential, and available 24 hours a day.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* 1800RESPECT */}
-            <Card className="flex flex-col justify-between">
+            <Card elevated className="flex flex-col justify-between">
               <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30 mb-4">
+                  <Phone className="h-5 w-5 text-primary-500 dark:text-[#2BC4C6]" aria-hidden="true" />
+                </div>
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary-500 dark:text-[#2BC4C6]">
                   {SAFETY_NUMBERS.respect.name}
                 </p>
-                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                   {SAFETY_NUMBERS.respect.description}
                 </p>
-                <p className="mt-3">
+                <p className="mt-4">
                   <a
                     href="tel:1800737732"
-                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 hover:text-primary-500 dark:hover:text-[#2BC4C6]"
+                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 decoration-primary-300 hover:decoration-primary-500 dark:decoration-[#2BC4C6]/40 dark:hover:decoration-[#2BC4C6] transition-colors"
                   >
                     {SAFETY_NUMBERS.respect.number}
                   </a>
@@ -284,7 +337,7 @@ export default function SafetyPage() {
               </div>
               <a
                 href="tel:1800737732"
-                className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
+                className="mt-8 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all hover:bg-primary-600 hover:shadow-[0_4px_12px_rgba(61,138,131,0.25)] dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
               >
                 <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
                 Call now
@@ -292,18 +345,21 @@ export default function SafetyPage() {
             </Card>
 
             {/* Lifeline */}
-            <Card className="flex flex-col justify-between">
+            <Card elevated className="flex flex-col justify-between">
               <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30 mb-4">
+                  <Phone className="h-5 w-5 text-primary-500 dark:text-[#2BC4C6]" aria-hidden="true" />
+                </div>
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary-500 dark:text-[#2BC4C6]">
                   {SAFETY_NUMBERS.lifeline.name}
                 </p>
-                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                   {SAFETY_NUMBERS.lifeline.description}
                 </p>
-                <p className="mt-3">
+                <p className="mt-4">
                   <a
                     href="tel:131114"
-                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 hover:text-primary-500 dark:hover:text-[#2BC4C6]"
+                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 decoration-primary-300 hover:decoration-primary-500 dark:decoration-[#2BC4C6]/40 dark:hover:decoration-[#2BC4C6] transition-colors"
                   >
                     {SAFETY_NUMBERS.lifeline.number}
                   </a>
@@ -311,7 +367,7 @@ export default function SafetyPage() {
               </div>
               <a
                 href="tel:131114"
-                className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
+                className="mt-8 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all hover:bg-primary-600 hover:shadow-[0_4px_12px_rgba(61,138,131,0.25)] dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
               >
                 <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
                 Call now
@@ -319,18 +375,21 @@ export default function SafetyPage() {
             </Card>
 
             {/* Emergency */}
-            <Card className="flex flex-col justify-between">
+            <Card elevated className="flex flex-col justify-between">
               <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-50 dark:bg-primary-900/30 mb-4">
+                  <Phone className="h-5 w-5 text-primary-500 dark:text-[#2BC4C6]" aria-hidden="true" />
+                </div>
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary-500 dark:text-[#2BC4C6]">
                   Emergency Services
                 </p>
-                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                   Police, fire, ambulance
                 </p>
-                <p className="mt-3">
+                <p className="mt-4">
                   <a
                     href="tel:000"
-                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 hover:text-primary-500 dark:hover:text-[#2BC4C6]"
+                    className="text-2xl font-bold text-[var(--text-primary)] underline underline-offset-4 decoration-primary-300 hover:decoration-primary-500 dark:decoration-[#2BC4C6]/40 dark:hover:decoration-[#2BC4C6] transition-colors"
                   >
                     000
                   </a>
@@ -338,7 +397,7 @@ export default function SafetyPage() {
               </div>
               <a
                 href="tel:000"
-                className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
+                className="mt-8 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all hover:bg-primary-600 hover:shadow-[0_4px_12px_rgba(61,138,131,0.25)] dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]"
               >
                 <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
                 Call now
@@ -346,12 +405,12 @@ export default function SafetyPage() {
             </Card>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-10 text-center">
             <a
               href="https://techsafety.org.au"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[48px] items-center gap-1.5 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-[#2BC4C6] dark:hover:text-[#24A8AA]"
+              className="inline-flex min-h-[48px] items-center gap-1.5 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-[#2BC4C6] dark:hover:text-[#24A8AA] transition-colors"
             >
               WESNET Technology Safety Australia
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -362,12 +421,19 @@ export default function SafetyPage() {
 
       {/* 6. FAQ */}
       <section className="bg-[var(--bg-primary)]">
-        <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
-            Frequently asked questions
-          </h2>
-
-          <div className="mt-8 max-w-3xl">
+        <div className="mx-auto max-w-[1200px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-[1fr_2fr] md:items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 dark:text-[#2BC4C6]">
+                FAQ
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                Safety questions
+              </h2>
+              <p className="mt-4 text-[var(--text-secondary)] leading-relaxed">
+                Common questions about how CoRaise keeps you safe.
+              </p>
+            </div>
             <Accordion items={FAQ_ITEMS} />
           </div>
         </div>

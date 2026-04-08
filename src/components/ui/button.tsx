@@ -14,10 +14,22 @@ interface ButtonProps {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    'bg-primary-500 text-white hover:bg-primary-600 dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]',
-  secondary:
-    'bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-50 dark:border-[#2BC4C6] dark:text-[#2BC4C6] dark:hover:bg-[#0F2C2C]',
+  primary: [
+    'bg-primary-500 text-white hover:bg-primary-600',
+    'shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]',
+    'hover:shadow-[0_4px_12px_rgba(61,138,131,0.25),inset_0_1px_0_rgba(255,255,255,0.1)]',
+    'active:shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_3px_rgba(0,0,0,0.1)]',
+    'active:translate-y-[0.5px]',
+    'dark:bg-[#2BC4C6] dark:text-[#0F1419] dark:hover:bg-[#24A8AA]',
+    'dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]',
+    'dark:hover:shadow-[0_4px_12px_rgba(43,196,198,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]',
+  ].join(' '),
+  secondary: [
+    'bg-transparent border-2 border-primary-500 text-primary-500',
+    'hover:bg-primary-50 hover:border-primary-600',
+    'active:bg-primary-100',
+    'dark:border-[#2BC4C6] dark:text-[#2BC4C6] dark:hover:bg-[#0F2C2C] dark:hover:border-[#24A8AA]',
+  ].join(' '),
   ghost:
     'bg-transparent text-primary-500 hover:bg-primary-50 dark:text-[#2BC4C6] dark:hover:bg-[#0F2C2C]',
 }
@@ -37,7 +49,7 @@ export function Button({
   ...props
 }: ButtonProps & Omit<ComponentPropsWithoutRef<'button'>, keyof ButtonProps>) {
   const classes = cn(
-    'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500',
+    'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500',
     variants[variant],
     sizes[size],
     className,

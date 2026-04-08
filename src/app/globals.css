@@ -80,10 +80,15 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scroll reveal animation */
+/* ------------------------------------------------------------------ */
+/*  Scroll reveal animation                                           */
+/* ------------------------------------------------------------------ */
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -103,16 +108,163 @@ body {
     transform: none;
     transition: none;
   }
+
+  .section-wave svg,
+  .hero-glow {
+    display: none;
+  }
 }
 
-/* Prose overrides for blog */
+/* ------------------------------------------------------------------ */
+/*  Section wave dividers                                             */
+/* ------------------------------------------------------------------ */
+
+.section-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-wave-top {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+}
+
+.section-wave-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .section-wave-top,
+  .section-wave-bottom {
+    height: 64px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero background glow                                              */
+/* ------------------------------------------------------------------ */
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.dark .hero-glow {
+  opacity: 0.08;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Subtle background texture (dot pattern)                           */
+/* ------------------------------------------------------------------ */
+
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, var(--color-neutral-300) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0.75px, transparent 0.75px);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Card shimmer on hover (subtle light sweep)                        */
+/* ------------------------------------------------------------------ */
+
+.card-hover-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.card-hover-shine:hover::after {
+  left: 120%;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Featured blog card gradient border                                */
+/* ------------------------------------------------------------------ */
+
+.featured-card-border {
+  position: relative;
+  background: var(--bg-primary);
+  border-radius: 1rem;
+}
+
+.featured-card-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #3d8a83 0%, #6560a8 50%, #3d8a83 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Stat counter emphasis                                             */
+/* ------------------------------------------------------------------ */
+
+.stat-number {
+  background: linear-gradient(135deg, #3d8a83 0%, #4ba89f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .stat-number {
+  background: linear-gradient(135deg, #2BC4C6 0%, #60d8d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Prose overrides for blog                                          */
+/* ------------------------------------------------------------------ */
+
 .prose h2 {
   color: var(--text-primary);
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 1.2;
-  margin-top: 2em;
+  margin-top: 2.5em;
   margin-bottom: 0.75em;
+  letter-spacing: -0.01em;
 }
 
 .prose h3 {
@@ -120,28 +272,139 @@ body {
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.3;
-  margin-top: 1.5em;
+  margin-top: 2em;
   margin-bottom: 0.5em;
 }
 
 .prose p {
-  line-height: 1.7;
-  margin-bottom: 1.25em;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+}
+
+.prose > p:first-of-type {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
 }
 
 .prose blockquote {
   border-left: 3px solid #3d8a83;
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
   font-style: italic;
   color: var(--text-secondary);
+  margin: 2em 0;
+  background: var(--bg-secondary);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .prose a {
   color: #3d8a83;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: #3d8a8366;
+  transition: text-decoration-color 200ms ease;
+}
+
+.prose a:hover {
+  text-decoration-color: #3d8a83;
 }
 
 .dark .prose a {
   color: #2bc4c6;
+  text-decoration-color: #2bc4c666;
+}
+
+.dark .prose a:hover {
+  text-decoration-color: #2bc4c6;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1.25em 0;
+}
+
+.prose li {
+  line-height: 1.75;
+  margin-bottom: 0.5em;
+}
+
+.prose hr {
+  border-color: var(--border-default);
+  margin: 2.5em 0;
+}
+
+.prose img {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-default);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Warm gradient backgrounds for sections                            */
+/* ------------------------------------------------------------------ */
+
+.bg-warm-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+}
+
+.bg-teal-soft {
+  background: linear-gradient(
+    135deg,
+    #f0f9f8 0%,
+    #faf9f7 50%,
+    #f3f3fa 100%
+  );
+}
+
+.dark .bg-teal-soft {
+  background: linear-gradient(
+    135deg,
+    #0F2C2C 0%,
+    #0f1419 50%,
+    #1e1e38 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Safety page empowerment styling                                   */
+/* ------------------------------------------------------------------ */
+
+.safety-feature-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.safety-feature-card:hover {
+  border-color: var(--color-primary-300);
+  box-shadow: 0 4px 12px rgba(61, 138, 131, 0.08);
+}
+
+.dark .safety-feature-card:hover {
+  border-color: rgba(43, 196, 198, 0.3);
+  box-shadow: 0 4px 12px rgba(43, 196, 198, 0.06);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Trust badge styling                                               */
+/* ------------------------------------------------------------------ */
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: background 200ms ease;
+}
+
+.trust-badge:hover {
+  background: var(--bg-secondary);
 }
