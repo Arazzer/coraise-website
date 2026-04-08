@@ -1,0 +1,60 @@
+{
+  "slug": "ourfamilywizard",
+  "name": "OurFamilyWizard",
+  "origin": "US",
+  "pricing": "$330-$900/yr (both parents)",
+  "annualFamily": "$330-$900",
+  "billingModel": "Per-parent",
+  "dataHosting": "United States",
+  "freeTier": false,
+  "auSchoolTerms": false,
+  "auHolidays": false,
+  "evidenceAct": false,
+  "sha256": false,
+  "emergencyExit": false,
+  "harassmentDetection": false,
+  "photoSharing": true,
+  "documentVault": false,
+  "ocrReceipts": false,
+  "professionalPortal": true,
+  "splitBilling": false,
+  "trustpilot": "2.9/5",
+  "keyWeaknesses": [
+    "Per-parent billing doubles the cost for families",
+    "US-centric design with no Australian localisation",
+    "Data hosted in the United States",
+    "Trustpilot AU rating of 2.9/5"
+  ],
+  "headline": "CoRaise vs OurFamilyWizard: The Australian Alternative",
+  "description": "See how CoRaise compares to OurFamilyWizard for Australian families. Lower cost, Australian data hosting, and Evidence Act compliance.",
+  "whySwitchTitle": "Why switch from OurFamilyWizard?",
+  "whySwitchPoints": [
+    "Save $200-750/year per family with CoRaise's split billing model",
+    "Data hosted in Sydney, not the United States",
+    "Australian school terms and state holidays built in",
+    "Evidence Act 1995 (Cth) compliant court exports with SHA-256 hashing",
+    "One subscription covers both parents - no per-parent billing"
+  ],
+  "faq": [
+    {
+      "question": "Is CoRaise accepted in Australian courts like OurFamilyWizard?",
+      "answer": "CoRaise exports are designed specifically for Australian courts. Every message is SHA-256 hashed and time-stamped, and exports comply with the Evidence Act 1995 (Cth). OurFamilyWizard was designed for US courts and does not offer Evidence Act compliance."
+    },
+    {
+      "question": "How much cheaper is CoRaise than OurFamilyWizard?",
+      "answer": "CoRaise costs $120-$180/year for the whole family. OurFamilyWizard costs $330-$900/year because both parents must pay separately. A family can save $200-$750/year by switching to CoRaise."
+    },
+    {
+      "question": "Can I transfer my records from OurFamilyWizard to CoRaise?",
+      "answer": "CoRaise does not currently offer a direct import from OurFamilyWizard. We recommend downloading your OurFamilyWizard records before cancelling, then starting fresh on CoRaise. All new communications will be recorded with full court-ready integrity from day one."
+    },
+    {
+      "question": "Does OurFamilyWizard have Australian school terms?",
+      "answer": "No. OurFamilyWizard uses US school calendars and holidays. CoRaise is pre-loaded with school terms and public holidays for every Australian state and territory, updated each year."
+    },
+    {
+      "question": "Where is my data stored with each platform?",
+      "answer": "OurFamilyWizard stores all data in the United States. CoRaise stores all data exclusively in Sydney, Australia (ap-southeast-2), ensuring compliance with Australian privacy laws and data sovereignty requirements."
+    }
+  ]
+}

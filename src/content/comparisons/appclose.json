@@ -1,0 +1,61 @@
+{
+  "slug": "appclose",
+  "name": "AppClose",
+  "origin": "US",
+  "pricing": "~$336/yr (both parents)",
+  "annualFamily": "~$336",
+  "billingModel": "Per-parent",
+  "dataHosting": "United States",
+  "freeTier": false,
+  "auSchoolTerms": false,
+  "auHolidays": false,
+  "evidenceAct": false,
+  "sha256": false,
+  "emergencyExit": false,
+  "harassmentDetection": false,
+  "photoSharing": false,
+  "documentVault": false,
+  "ocrReceipts": false,
+  "professionalPortal": false,
+  "splitBilling": false,
+  "trustpilot": "N/A",
+  "keyWeaknesses": [
+    "Free tier removed January 2026 - users feel 'strong-armed into paying'",
+    "Per-parent billing doubles the family cost",
+    "No DV safety features",
+    "No Australian localisation or court export optimisation"
+  ],
+  "headline": "CoRaise vs AppClose: A Better Deal for Australian Families",
+  "description": "AppClose removed its free tier in January 2026. Compare CoRaise - the Australian co-parenting platform with a permanent free plan, split billing, and court-ready exports.",
+  "whySwitchTitle": "Why switch from AppClose?",
+  "whySwitchPoints": [
+    "CoRaise has a permanent free tier - AppClose removed theirs in January 2026",
+    "Save over $200/year compared to AppClose's per-parent pricing",
+    "Split billing means one subscription covers both parents",
+    "Data hosted exclusively in Sydney, Australia",
+    "Built-in DV safety features that AppClose does not offer",
+    "Court-ready PDF exports with SHA-256 integrity verification"
+  ],
+  "faq": [
+    {
+      "question": "Why did AppClose remove its free plan?",
+      "answer": "AppClose moved to a fully paid model in January 2026. Users who previously relied on the free tier were required to subscribe. CoRaise is committed to maintaining a permanent free plan with core co-parenting features."
+    },
+    {
+      "question": "How much does CoRaise cost compared to AppClose?",
+      "answer": "AppClose costs approximately $336/year for both parents ($168/parent/year). CoRaise's Family plan is $120/year total for both parents, and the free tier is available permanently. That is a saving of over $200/year."
+    },
+    {
+      "question": "Does AppClose have safety features for DV situations?",
+      "answer": "No. AppClose does not offer domestic violence safety features. CoRaise includes an emergency exit button, harassment detection, no typing indicators, hidden notification previews, block/restrict mode, and session timeouts - all designed to protect vulnerable users."
+    },
+    {
+      "question": "Can I use AppClose records in an Australian court?",
+      "answer": "AppClose does not offer court-optimised exports for Australian family law. CoRaise generates PDF exports that comply with the Evidence Act 1995 (Cth), with SHA-256 integrity verification and a certificate of authenticity."
+    },
+    {
+      "question": "Does CoRaise have location sharing like AppClose?",
+      "answer": "CoRaise does not currently offer location sharing. Our focus is on secure communication, calendar management, expense tracking, and court-ready record-keeping. Location sharing may be considered in future releases based on user feedback."
+    }
+  ]
+}

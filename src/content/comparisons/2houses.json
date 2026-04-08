@@ -1,0 +1,61 @@
+{
+  "slug": "2houses",
+  "name": "2Houses",
+  "origin": "France",
+  "pricing": "~$170/yr (per family)",
+  "annualFamily": "~$170",
+  "billingModel": "Per-family",
+  "dataHosting": "EU/US",
+  "freeTier": false,
+  "auSchoolTerms": false,
+  "auHolidays": false,
+  "evidenceAct": false,
+  "sha256": false,
+  "emergencyExit": false,
+  "harassmentDetection": false,
+  "photoSharing": true,
+  "documentVault": true,
+  "ocrReceipts": false,
+  "professionalPortal": false,
+  "splitBilling": false,
+  "trustpilot": "N/A",
+  "keyWeaknesses": [
+    "Data hosted in EU/US - not compliant with Australian data sovereignty",
+    "No Australian school terms or public holidays",
+    "No tamper-proof messaging or SHA-256 hashing",
+    "No DV safety features"
+  ],
+  "headline": "CoRaise vs 2Houses: Built for Australia, Not Europe",
+  "description": "Compare CoRaise and 2Houses for Australian families. Both offer per-family pricing, but only CoRaise provides Australian data hosting, school terms, and court-ready exports.",
+  "whySwitchTitle": "Why choose CoRaise over 2Houses?",
+  "whySwitchPoints": [
+    "Data hosted exclusively in Sydney - 2Houses uses EU/US servers",
+    "Australian school terms and state-specific public holidays built in",
+    "Tamper-proof messaging with SHA-256 hashing on every message",
+    "Evidence Act 1995 (Cth) compliant court exports",
+    "DV safety features including emergency exit and harassment detection",
+    "Comparable pricing with split billing ($120/year vs ~$170/year)"
+  ],
+  "faq": [
+    {
+      "question": "How does 2Houses pricing compare to CoRaise?",
+      "answer": "2Houses charges approximately $170/year per family with one fee covering both parents. CoRaise's Family plan is $120/year total, and also offers a permanent free tier. Both platforms use a per-family model, but CoRaise is more affordable and includes split billing."
+    },
+    {
+      "question": "Does 2Houses store data in Australia?",
+      "answer": "No. 2Houses stores data on EU and US servers. CoRaise stores all data exclusively in Sydney, Australia (ap-southeast-2), ensuring compliance with Australian privacy legislation and data sovereignty requirements."
+    },
+    {
+      "question": "Does 2Houses have tamper-proof messaging?",
+      "answer": "No. 2Houses does not offer tamper-proof messaging or cryptographic integrity verification. CoRaise makes every message immutable after sending and generates a SHA-256 content hash as proof of integrity."
+    },
+    {
+      "question": "Can 2Houses generate court reports for Australian family law?",
+      "answer": "2Houses is not positioned as a court-ready platform and does not offer exports designed for Australian courts. CoRaise generates PDF exports compliant with the Evidence Act 1995 (Cth), with SHA-256 verification and a certificate of authenticity."
+    },
+    {
+      "question": "Does 2Houses have Australian school term calendars?",
+      "answer": "No. 2Houses was built in France and does not include Australian school terms or state-specific public holidays. CoRaise comes pre-loaded with school terms for every Australian state and territory, updated each year."
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+
+@theme inline {
+  /* Primary - desaturated teal */
+  --color-primary-50: #f0f9f8;
+  --color-primary-100: #d3efec;
+  --color-primary-200: #a7dfda;
+  --color-primary-300: #72c5be;
+  --color-primary-400: #4ba89f;
+  --color-primary-500: #3d8a83;
+  --color-primary-600: #326f69;
+  --color-primary-700: #2a5955;
+  --color-primary-800: #234745;
+  --color-primary-900: #1c3a39;
+
+  /* Secondary - muted indigo */
+  --color-secondary-50: #f3f3fa;
+  --color-secondary-100: #e0dff2;
+  --color-secondary-200: #c2c0e5;
+  --color-secondary-300: #9b97d1;
+  --color-secondary-400: #7b76bd;
+  --color-secondary-500: #6560a8;
+  --color-secondary-600: #524e8c;
+  --color-secondary-700: #423f70;
+  --color-secondary-800: #353359;
+  --color-secondary-900: #2b2a48;
+
+  /* Neutral - warm grey */
+  --color-neutral-50: #faf9f7;
+  --color-neutral-100: #f2f0ed;
+  --color-neutral-200: #e5e2dc;
+  --color-neutral-300: #d1ccc4;
+  --color-neutral-400: #b3ada3;
+  --color-neutral-500: #8e877d;
+  --color-neutral-600: #6f6960;
+  --color-neutral-700: #564f48;
+  --color-neutral-800: #3d3832;
+  --color-neutral-900: #282420;
+
+  /* Semantic */
+  --color-success: #2d8659;
+  --color-success-light: #e8f5ee;
+  --color-warning: #c27a1a;
+  --color-warning-light: #fef3e2;
+  --color-error: #c4532d;
+  --color-error-light: #fdece7;
+  --color-info: #2b6cb0;
+  --color-info-light: #ebf2fa;
+
+  /* System font stack */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+}
+
+/* Dark mode custom properties */
+.dark {
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a2332;
+  --bg-tertiary: #243044;
+  --text-primary: #e8ecf1;
+  --text-secondary: #a0aec0;
+  --text-tertiary: #718096;
+  --border-default: #2d3748;
+  --border-strong: #4a5568;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafb;
+  --bg-tertiary: #f0f3f5;
+  --text-primary: #1a2b3c;
+  --text-secondary: #5a6b7c;
+  --text-tertiary: #8a9bac;
+  --border-default: #e2e8f0;
+  --border-strong: #cbd5e0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Prose overrides for blog */
+.prose h2 {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose p {
+  line-height: 1.7;
+  margin-bottom: 1.25em;
+}
+
+.prose blockquote {
+  border-left: 3px solid #3d8a83;
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.prose a {
+  color: #3d8a83;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dark .prose a {
+  color: #2bc4c6;
+}
