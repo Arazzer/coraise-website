@@ -1,5 +1,13 @@
 {
   "regions": ["syd1"],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "coraise.com.au" }],
+      "destination": "https://www.coraise.com.au/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

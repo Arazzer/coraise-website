@@ -133,7 +133,7 @@ export default function PricingPage() {
       <section className="py-16 md:py-24 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
-            Fair pricing for separated families.
+            Co-parenting app pricing. Free plan available.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)]">
             CoRaise is the only co-parenting platform with split billing. Both parents share the

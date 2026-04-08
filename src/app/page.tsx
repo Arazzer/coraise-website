@@ -17,7 +17,7 @@ import { Card } from '@/components/ui/card'
 import { Accordion } from '@/components/ui/accordion'
 import { JsonLd } from '@/components/seo/json-ld'
 import { createMetadata } from '@/lib/metadata'
-import { softwareApplicationSchema, faqSchema } from '@/lib/structured-data'
+import { softwareApplicationSchema, faqSchema, websiteSchema } from '@/lib/structured-data'
 import { APP_URL, COMPANY, PRICING } from '@/lib/constants'
 
 /* ------------------------------------------------------------------ */
@@ -85,6 +85,7 @@ export default function HomePage() {
   return (
     <>
       {/* Structured data */}
+      <JsonLd data={websiteSchema()} />
       <JsonLd data={softwareApplicationSchema()} />
       <JsonLd data={faqSchema(FAQ_ITEMS)} />
 
@@ -95,10 +96,10 @@ export default function HomePage() {
             {/* Copy - 60 % */}
             <div className="md:col-span-3">
               <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-5xl">
-                Co-parenting made simpler.
+                The co-parenting app built for Australian families.
               </h1>
               <p className="mt-6 text-lg text-[var(--text-secondary)] md:text-xl">
-                Secure messaging, shared calendars with Australian school terms,
+                The Australian co-parenting app with secure messaging, shared calendars with school terms,
                 expense tracking, and court-ready records. One subscription. Both
                 parents get full access.
               </p>

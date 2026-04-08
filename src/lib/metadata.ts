@@ -22,7 +22,7 @@ export function createMetadata({
 }: MetadataInput): Metadata {
   const url = `${SITE_URL}${path}`
   const ogImage = image || `${SITE_URL}/images/og-default.jpg`
-  const fullTitle = path === '/' ? `${COMPANY.name} - ${COMPANY.tagline}` : `${title} | ${COMPANY.name}`
+  const fullTitle = path === '/' ? `${COMPANY.name} - ${COMPANY.tagline}` : title
 
   return {
     title: fullTitle,

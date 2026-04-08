@@ -6,7 +6,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: COMPANY.name,
     url: SITE_URL,
-    logo: `${SITE_URL}/images/logo-full.webp`,
+    logo: `${SITE_URL}/images/logo-full.png`,
     description: COMPANY.description,
     address: {
       '@type': 'PostalAddress',
@@ -16,6 +16,21 @@ export function organizationSchema() {
     areaServed: {
       '@type': 'Country',
       name: 'Australia',
+    },
+  }
+}
+
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: COMPANY.name,
+    url: SITE_URL,
+    description: COMPANY.description,
+    inLanguage: 'en-AU',
+    publisher: {
+      '@type': 'Organization',
+      name: COMPANY.name,
     },
   }
 }
@@ -90,7 +105,7 @@ export function articleSchema({
     publisher: {
       '@type': 'Organization',
       name: COMPANY.name,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo-full.webp` },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo-full.png` },
     },
     inLanguage: 'en-AU',
     isAccessibleForFree: true,

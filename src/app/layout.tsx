@@ -46,8 +46,6 @@ export default function RootLayout({
     <html lang="en-AU" suppressHydrationWarning>
       <head>
         <ThemeScript />
-        <link rel="alternate" hrefLang="en-AU" href={SITE_URL} />
-        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <JsonLd data={organizationSchema()} />

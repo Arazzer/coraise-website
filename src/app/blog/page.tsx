@@ -3,6 +3,7 @@ import { Clock } from 'lucide-react'
 import { JsonLd } from '@/components/seo/json-ld'
 import { createMetadata } from '@/lib/metadata'
 import { breadcrumbSchema } from '@/lib/structured-data'
+import { SITE_URL, COMPANY } from '@/lib/constants'
 import { getAllPosts } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
@@ -37,12 +38,23 @@ export default async function BlogPage() {
           { name: 'Blog', href: '/blog' },
         ])}
       />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'CoRaise Blog',
+          description: 'Guides, news, and insights for separated Australian families.',
+          url: `${SITE_URL}/blog`,
+          publisher: { '@type': 'Organization', name: COMPANY.name },
+          inLanguage: 'en-AU',
+        }}
+      />
 
       {/* Hero */}
       <section className="py-16 md:py-24 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
-            Blog
+            Co-Parenting Blog for Australian Families
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)]">
             Guides, news, and insights for separated Australian families.

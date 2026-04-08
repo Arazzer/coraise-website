@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Accordion } from '@/components/ui/accordion'
 import { JsonLd } from '@/components/seo/json-ld'
 import { createMetadata } from '@/lib/metadata'
-import { faqSchema, breadcrumbSchema } from '@/lib/structured-data'
+import { faqSchema, breadcrumbSchema, softwareApplicationSchema } from '@/lib/structured-data'
 import { APP_URL } from '@/lib/constants'
 
 export const metadata = createMetadata({
@@ -154,6 +154,7 @@ export default function ComparePage() {
   return (
     <>
       <JsonLd data={faqSchema(faqItems)} />
+      <JsonLd data={softwareApplicationSchema()} />
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', href: '/' },

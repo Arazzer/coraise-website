@@ -11,7 +11,8 @@ import {
 import { Button } from '@/components/ui/button'
 import { JsonLd } from '@/components/seo/json-ld'
 import { createMetadata } from '@/lib/metadata'
-import { softwareApplicationSchema, breadcrumbSchema } from '@/lib/structured-data'
+import { softwareApplicationSchema, breadcrumbSchema, faqSchema } from '@/lib/structured-data'
+import { Accordion } from '@/components/ui/accordion'
 import { APP_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -127,6 +128,16 @@ export default function FeaturesPage() {
     <>
       <JsonLd data={softwareApplicationSchema()} />
       <JsonLd
+        data={faqSchema([
+          { question: 'Does CoRaise work on mobile?', answer: 'Yes. CoRaise works on web (desktop and mobile browsers), and native iOS and Android apps are available via the App Store and Google Play.' },
+          { question: 'Can I sync CoRaise with Google Calendar?', answer: 'Yes. CoRaise supports syncing with Google Calendar and Apple Calendar so your co-parenting schedule appears alongside your other events.' },
+          { question: 'Can messages be edited or deleted after sending?', answer: 'No. Messages in CoRaise are tamper-proof and cannot be edited or deleted once sent. This ensures a reliable, court-admissible record of all communication.' },
+          { question: 'How does expense tracking work?', answer: 'You can log child-related expenses, attach receipt photos (with optional OCR scanning), set a split ratio, and track a running balance showing who owes what.' },
+          { question: 'What safety features does CoRaise include?', answer: 'CoRaise includes an emergency exit button, notification privacy (content hidden by default), block/restrict mode, harassment detection, session timeout, and no typing indicators. Safety resources are accessible without login.' },
+          { question: 'What file formats does court export support?', answer: 'CoRaise generates court-formatted PDF exports that include all messages, calendar events, expenses with receipts, child information, an audit log, and a certificate of authenticity with SHA-256 verification.' },
+        ])}
+      />
+      <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', href: '/' },
           { name: 'Features', href: '/features' },
@@ -137,7 +148,7 @@ export default function FeaturesPage() {
       <section className="py-16 md:py-24 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
-            Everything your family needs. Nothing it doesn&apos;t.
+            Co-parenting app features for Australian families.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-[var(--text-secondary)]">
             CoRaise brings messaging, calendars, expenses, documents, and court-ready exports into
@@ -219,6 +230,25 @@ export default function FeaturesPage() {
           </section>
         )
       })}
+
+      {/* FAQ */}
+      <section className="py-16 md:py-20 bg-[var(--bg-secondary)]">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] text-center mb-8">
+            Frequently asked questions
+          </h2>
+          <Accordion
+            items={[
+              { question: 'Does CoRaise work on mobile?', answer: 'Yes. CoRaise works on web (desktop and mobile browsers), and native iOS and Android apps are available via the App Store and Google Play.' },
+              { question: 'Can I sync CoRaise with Google Calendar?', answer: 'Yes. CoRaise supports syncing with Google Calendar and Apple Calendar so your co-parenting schedule appears alongside your other events.' },
+              { question: 'Can messages be edited or deleted after sending?', answer: 'No. Messages in CoRaise are tamper-proof and cannot be edited or deleted once sent. This ensures a reliable, court-admissible record of all communication.' },
+              { question: 'How does expense tracking work?', answer: 'You can log child-related expenses, attach receipt photos (with optional OCR scanning), set a split ratio, and track a running balance showing who owes what.' },
+              { question: 'What safety features does CoRaise include?', answer: 'CoRaise includes an emergency exit button, notification privacy (content hidden by default), block/restrict mode, harassment detection, session timeout, and no typing indicators. Safety resources are accessible without login.' },
+              { question: 'What file formats does court export support?', answer: 'CoRaise generates court-formatted PDF exports that include all messages, calendar events, expenses with receipts, child information, an audit log, and a certificate of authenticity with SHA-256 verification.' },
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 md:py-24 text-center">
